@@ -1,0 +1,28 @@
+{
+  "name": "@qmoosa/crosschain-sdk",
+  "version": "1.0.0",
+  "description": "QMOOSA Cross-Chain SDK — Typed Client Library, Preimage Generator & Atomic Swap State Coordinator",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "test": "npm run build && node --test tests/sdk.test.mjs",
+    "lint": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@types/node": "^20.12.7",
+    "typescript": "^5.4.5"
+  },
+  "keywords": [
+    "qmoosa",
+    "crosschain",
+    "sdk",
+    "atomic-swap",
+    "htlc",
+    "client",
+    "typescript"
+  ],
+  "author": "elon00",
+  "license": "MIT"
+}
