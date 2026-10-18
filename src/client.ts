@@ -32,19 +32,19 @@ export class CrossChainClient {
     return sourceTimelock - destTimelock >= minBufferSec;
   }
 
-  public initiateSwapOrder(request: SwapOrderRequest): { success: boolean; swapId: string; error?: string } {
-    if (!this.validateTimelockSafety(request.sourceTimelock, request.destTimelock)) {
+  public initiateSwapOrder(request: SwapOrderRequest, minBufferSec: number = 300): { success: boolean; swapId: string; error?: string } {
+    if (!this.validateTimelockSafety(request.sourceTimelock, request.destTimelock, minBufferSec)) {
       return {
         success: false,
         swapId: "",
-        error: "INSUFFICIENT_TIMELOCK_DELTA: Source timelock must exceed destination timelock by at least 300s"
+        error: `INSUFFICIENT_TIMELOCK_DELTA: Source timelock must exceed destination timelock by at least ${minBufferSec}s`
       };
     }
 
     const swapId = "0x" + Math.random().toString(16).slice(2).padStart(64, "0");
 
     this.localSwaps.set(swapId, {
-      request,
+      request: Object.freeze({ ...request }),
       swapId,
       state: SwapLifecycleState.PENDING_SOURCE,
       sourceBlockDepth: 0,
@@ -118,7 +118,7 @@ export class CrossChainClient {
     if (!s) return undefined;
 
     const timeRemaining = Math.max(0, s.request.destTimelock - currentTimestamp);
-    return {
+    return Object.freeze({
       swapId,
       state: s.state,
       sourceChainId: s.request.sourceChainId,
@@ -129,6 +129,6 @@ export class CrossChainClient {
       destConfirmed: s.destBlockDepth >= this.destRequiredFinality,
       timeRemainingSec: timeRemaining,
       revealedSecret: s.revealedSecret
-    };
+    });
   }
 }
