@@ -1,0 +1,53 @@
+{
+  "engine": "REA_Reverse_Engineer_Anything",
+  "status": "STRUCTURE_RECONSTRUCTED",
+  "analyzed_files": 15,
+  "manifest": {
+    "package-lock.json": {
+      "bytes": 1528
+    },
+    "package.json": {
+      "bytes": 670
+    },
+    "qmoosa-crosschain-sdk-1.0.0.tgz": {
+      "bytes": 10079
+    },
+    "README.md": {
+      "bytes": 616
+    },
+    "tsconfig.json": {
+      "bytes": 327
+    },
+    "scripts\\rea_inspector.py": {
+      "bytes": 1485
+    },
+    "scripts\\rsi_engine.py": {
+      "bytes": 2039
+    },
+    "src\\client.ts": {
+      "bytes": 4817
+    },
+    "src\\crypto.ts": {
+      "bytes": 893
+    },
+    "src\\index.ts": {
+      "bytes": 89
+    },
+    "src\\types.ts": {
+      "bytes": 1026
+    },
+    "tests\\reality_check_harness.py": {
+      "bytes": 1250
+    },
+    "tests\\sdk.test.mjs": {
+      "bytes": 3974
+    },
+    ".github\\workflows\\ci.yml": {
+      "bytes": 665
+    },
+    ".github\\workflows\\qmoosa-rsi-rea-sync.yml": {
+      "bytes": 531
+    }
+  },
+  "timestamp": 1794020553
+}
